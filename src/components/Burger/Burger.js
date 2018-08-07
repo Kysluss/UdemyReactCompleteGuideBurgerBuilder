@@ -20,7 +20,16 @@ const burger = (props) => {
                 //Create the ingredient type in the array
                 return <BurgerIngredient key={igKey + i} type={igKey} />;
             })
-        });
+        })
+        //This will flatten the array of arrays into just an array
+        //This takes 2 arguments
+        //A function that takes 2 arguments, the previous value and the currentValue
+        //An initial value
+        .reduce((prevValue, currentValue) => {
+            //Take the current value and add it to the previous value which is the array we're building
+            return prevValue.concat(currentValue);
+        }, []);
+
     return (
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top" />
