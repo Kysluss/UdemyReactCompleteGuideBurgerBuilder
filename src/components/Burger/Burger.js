@@ -13,7 +13,7 @@ const burger = (props) => {
     //     meat: 2
     // }
     //Object.keys generates a string[] of the keys
-    const transformedIngredients = Object.keys(props.ingredients)
+    let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
             //Create a new array of the lengh specified in the ingredients
             return [...Array(props.ingredients[igKey])].map((__dirname, i) => {
@@ -30,6 +30,10 @@ const burger = (props) => {
             return prevValue.concat(currentValue);
         }, []);
 
+    if(transformedIngredients.length === 0) {
+        transformedIngredients = <p>Please start adding ingredients</p>;
+    }
+    
     return (
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top" />
