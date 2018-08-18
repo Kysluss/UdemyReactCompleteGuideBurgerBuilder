@@ -20,7 +20,8 @@ const order = (props) => {
                 textTransform: 'capitalize', 
                 display: 'inline-block', 
                 margin: '0px 8px', 
-                border: '1px solid #ccc'
+                border: '1px solid #ccc', 
+                padding: '5px'
             }} 
             key={ingredient.name}>{ingredient.name} ({ingredient.amount})</span>
     })
