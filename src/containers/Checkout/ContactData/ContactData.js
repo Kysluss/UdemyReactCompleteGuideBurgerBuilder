@@ -85,6 +85,24 @@ class ContactData extends Component {
                 this.setState({ loading: false });
             });
     }
+
+    inputChangedHandler = (event, inputIdentifier) => {
+        // {...this.state.orderForm} does not perform a deep clone
+        const updatedOrderForm = {...this.state.orderForm};
+
+        // We need to spread the object within the object
+        // This will properly create a copy of this.state.orderForm[keyName]
+        // If we wanted to updated elementConfig, we would also need to clone updatedFormElement.elementConfig
+        const updatedFormElement = {...updatedOrderForm[inputIdentifier]};
+
+        updatedFormElement.value = event.target.value;
+
+        updatedOrderForm[inputIdentifier] = updatedFormElement;
+
+        this.setState({
+            orderForm: updatedOrderForm
+        });
+    }
     
     render() {
         const formElementsArray = [];
@@ -104,7 +122,8 @@ class ContactData extends Component {
                         key={formElement.id}
                         elementType={formElement.config.elementType} 
                         elementConfig={formElement.config.elementConfig} 
-                        value={formElement.config.value} />
+                        value={formElement.config.value} 
+                        changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
                 <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
             </form>
