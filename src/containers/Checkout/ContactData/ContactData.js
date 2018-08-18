@@ -23,7 +23,7 @@ class ContactData extends Component {
                     <input className={classes.Input} type="text" name="email" placeholder="Your EMail" />
                     <input className={classes.Input} type="text" name="street" placeholder="Your Street" />
                     <input className={classes.Input} type="text" name="postal" placeholder="Your Postal Code" />
-                    <Button btonType="Success">ORDER</Button>
+                    <Button btnType="Success">ORDER</Button>
                 </form>
             </div>
         );
