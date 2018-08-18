@@ -18,7 +18,7 @@ const order = (props) => {
         return <span 
             style={{
                 textTransform: 'capitalize', 
-                display: 'block', 
+                display: 'inline-block', 
                 margin: '0px 8px', 
                 border: '1px solid #ccc'
             }} 
