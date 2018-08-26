@@ -45,24 +45,7 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        // alert('You continue!');
-
-        const queryParams = [];
-
-        for(let i in this.state.ingredients) {
-            // You should always encodeURIComponent your query params because it will handle the special cases for query parameters
-            // Mostly just white spaces which we know we don't have in our ingredients, but this is good practice in general
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
-        }
-
-        queryParams.push('price=' + this.props.price);
-
-        const queryString = queryParams.join('&');
-
-        this.props.history.push({
-            pathname: '/checkout', 
-            search: '?' + queryString
-        });
+        this.props.history.push('/checkout');
     }
 
     render() {
