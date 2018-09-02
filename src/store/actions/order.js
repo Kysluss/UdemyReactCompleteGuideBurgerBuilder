@@ -54,19 +54,20 @@ export const fetchOrdersSuccess = (orders) => {
 
 export const fetchOrdersFail = (error) => {
     return {
-        type: actionTypes.PURCHASE_BURGER_FAIL, 
+        type: actionTypes.FETCH_ORDERS_FAIL, 
         error: error
     }
 }
 
 export const fetchOrdersStart = () => {
     return {
-        type: actionTypes.PURCHASE_BURGER_START
+        type: actionTypes.FETCH_ORDERS_START
     }
 }
 
 export const fetchOrders = () => {
     return dispatch => {
+        dispatch(fetchOrdersStart());
         axios.get('/orders.json')
             .then(res => {
                 // We get back an object
