@@ -7,6 +7,7 @@ import Input from '../../../components/UI/Input/Input';
 import axios from '../../../axios-orders';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../../store/actions/index';
+import { updateObject } from '../../../shared/utility';
 
 import classes from './ContactData.css';
 
@@ -140,18 +141,20 @@ class ContactData extends Component {
 
     inputChangedHandler = (event, inputIdentifier) => {
         // {...this.state.orderForm} does not perform a deep clone
-        const updatedOrderForm = {...this.state.orderForm};
+        
 
         // We need to spread the object within the object
         // This will properly create a copy of this.state.orderForm[keyName]
         // If we wanted to updated elementConfig, we would also need to clone updatedFormElement.elementConfig
-        const updatedFormElement = {...updatedOrderForm[inputIdentifier]};
+        const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier], {
+            value: event.target.value, 
+            valid: this.checkValidity(event.target.value, this.state.orderForm[inputIdentifier].validation), 
+            touched: true
+        });
 
-        updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
-        updatedFormElement.touched = true;
-
-        updatedOrderForm[inputIdentifier] = updatedFormElement;
+        const updatedOrderForm = updateObject(this.state.orderForm, {
+            [inputIdentifier]: updatedFormElement
+        });
 
         let formIsValid = true;
 
