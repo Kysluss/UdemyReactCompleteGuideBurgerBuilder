@@ -5,7 +5,7 @@ export const purchaseBurgerSuccess = (id, orderData) => {
     return {
         type: actionTypes.PURCHASE_BURGER_SUCCESS, 
         orderId: id, 
-        orderData, orderData 
+        orderData: orderData 
     };
 }
 
@@ -30,7 +30,6 @@ export const purchaseBurger = (orderData, token) => {
         // We need it for firebase to understand our request
         axios.post('/orders.json?auth=' + token, orderData)
             .then(response => {
-                console.log(response.data);
                 dispatch(purchaseBurgerSuccess(response.data.name, orderData));
             })
             .catch(error => {
