@@ -20,7 +20,7 @@ const updateIngredientAmount = (state, name, amount) => {
     const updatedIngredients = updateObject(state.ingredients, updatedIngredient);
     const updatedState = {
         ingredients: updatedIngredients, 
-        totalPrice: state.totalPrice + INGREDIENT_PRICES[name], 
+        totalPrice: state.totalPrice + (INGREDIENT_PRICES[name] * amount), 
         building: true
     }
     return updateObject(state, updatedState);
