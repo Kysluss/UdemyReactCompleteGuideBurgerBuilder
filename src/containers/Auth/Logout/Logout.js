@@ -5,19 +5,22 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/index';
 
 const logout = props => {
-    const { onLogout } = props;
+  const { onLogout } = props;
 
-    useEffect(() => {
-        onLogout();
-    }, [onLogout]);
-    
-    return <Redirect to="/" />;
-}
+  useEffect(() => {
+    onLogout();
+  }, [onLogout]);
+
+  return <Redirect to="/" />;
+};
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onLogout: () => dispatch(actions.logout())
-    };
-}
+  return {
+    onLogout: () => dispatch(actions.logout())
+  };
+};
 
-export default connect(null, mapDispatchToProps)(logout);
+export default connect(
+  null,
+  mapDispatchToProps
+)(logout);
