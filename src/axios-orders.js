@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'https://react-hooks-update.firebaseio.com'
+    baseURL: 'https://react-my-burger-9263a.firebaseio.com/'
 });
 
 export default instance;
