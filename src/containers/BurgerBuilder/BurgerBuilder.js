@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Aux from '../../hoc/Auxilary/Auxilary';
 import Burger from '../../components/Burger/Burger';
